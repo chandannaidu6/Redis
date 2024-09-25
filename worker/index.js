@@ -19,6 +19,7 @@ function processSubmission(submission) {
         console.log(`language ${language}`);
         yield new Promise(resolve => setTimeout(resolve, 1000));
         console.log(`Finished processing submission for problemId ${problemId}`);
+        client.publish("problem_done", JSON.stringify({ problemId, status: "TLE" }));
     });
 }
 function startWorker() {
